@@ -124,3 +124,7 @@ $ yarn
 $ yarn build
 $ yarn start
 ```
+
+With the wallet running, the interactions in the environment operate as in the following diagram:
+
+![Wallet Annotated](docs/Web-Wallet-EOS-Annotated-Diagram.png?raw=true)
