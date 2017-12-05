@@ -15,7 +15,7 @@ service).
 
 This is the basic environment the web wallet operates within:
 
-![Alt text](/docs/Web-Wallet-EOS-Basic-DIagram.png?raw=true "Wallet Environment")
+![Alt text](docs/Web-Wallet-EOS-Basic-DIagram.png?raw=true "Wallet Environment")
 
 ### `eosd` Connector Host
 THe necessary environment means that the Wallet will need a specific `eosd` node configured and running, which will 
