@@ -12,13 +12,14 @@ import CreateEOSAccount from "./routes/CreateEOSAccount";
 import AddEOSAccount from "./routes/AddEOSAccount/AddEOSAccount";
 import Login from "./routes/Login/index";
 import Signup from "./routes/Signup/index";
-import About from "./routes/About/index";
-import Faq from "./routes/Faq/index";
+// import About from "./routes/About/index";
+// import Faq from "./routes/Faq/index";
 import Transfer from "./routes/Transfer/index";
 import Transactions from "./routes/Transactions/index";
 import Users from "./routes/Users/index";
 import Accounts from "./routes/Accounts/index";
 import EditProfile from "./routes/EditProfile/index";
+import Profile from "./routes/UserProfile/index";
 import NoMatch from "./routes/NoMatch/index";
 import { closeMenu } from "./redux-modules/app/app-actions";
 import { doLogout } from "./thunks/login";
@@ -32,7 +33,8 @@ const RoutesAuthenticated = ({ isAuthenticated, location }) =>
     <Redirect to="/login" />
   ) : (
     [
-      <Route path="/" exact component={Transfer} key="transfer" />,
+      <Route exact path="/" render={() => <Redirect to="/transfer" />} />,
+      <Route path="/transfer" component={Transfer} key="transfer" />,
       <Route
         path="/transactions"
         component={Transactions}
@@ -53,13 +55,13 @@ const renderModalRoutes = props => (
     <Route path="/login" render={() => <Login {...props} />} />
     <Route path="/signup" render={() => <Signup {...props} />} />
     <Route
-      path="/create-eos-account"
+      path="/accounts/create-eos"
       render={() => <CreateEOSAccount {...props} />}
     />
   </Switch>
 );
 
-const modalRoutes = ["/login", "/signup", "/create-eos-account"];
+const modalRoutes = ["/login", "/signup", "/accounts/create-eos"];
 
 type Props = {
   history: any,
@@ -86,7 +88,7 @@ class App extends React.Component<Props> {
 
     /* eslint-disable */
     this.previousLocation = this.unauthLocation = {
-      pathname: "/about",
+      pathname: "/users",
       hash: "",
       search: ""
     };
@@ -155,9 +157,14 @@ class App extends React.Component<Props> {
             <Switch location={isModalOpen ? this.previousLocation : location}>
               <Redirect from="/create-account" to="/signup" />
               <Redirect from="/connect-account" to="/accounts" />
-              <Route path="/users" component={Users} key="users" />,
-              <Route path="/about" component={About} />
-              <Route path="/faq" component={Faq} />
+              <Route
+                path="/users/:userId"
+                component={Profile}
+                key="user-profile"
+              />
+              <Route exact path="/users" component={Users} key="users" />
+              {/*<Route path="/about" component={About} />*/}
+              {/*<Route path="/faq" component={Faq} />*/}
               <RoutesAuthenticated isAuthenticated={isAuthenticated} />
               <Route path="*" component={NoMatch} />
             </Switch>

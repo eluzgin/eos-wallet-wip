@@ -1,4 +1,4 @@
-# EOS Web Wallet &nbsp; [![Build Status](https://travis-ci.org/Tandemly/eos-wallet-wip.svg?branch=develop)](https://travis-ci.org/Tandemly/eos-wallet-wip)
+# EOS Web Wallet &nbsp; [![Build Status](https://travis-ci.org/Tandemly/eos-web-wallet.svg?branch=develop)](https://travis-ci.org/Tandemly/eos-web-wallet)
 
 This is the web based wallet for EOS. The goal of the web wallet is to eventually be a multi-token wallet; but for now
 is aiming to support the most recent version of EOS with some basic wallet features.
@@ -93,8 +93,8 @@ You can use the provided `.env.example` file to get started.
 First, clone the application from the repo and create the local `.env` file:
 
 ```bash
-$ git clone https://github.com/Tandemly/eos-wallet-wip.git
-$ cd eos-wallet-aip
+$ git clone https://github.com/Tandemly/eos-web-wallet.git
+$ cd eos-web-wallet
 $ cp .env.example .env
 ```
 
